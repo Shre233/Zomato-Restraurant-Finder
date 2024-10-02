@@ -1,0 +1,26 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Restaurant {
+  id                 String     @id @default(auto()) @map("_id") @db.ObjectId
+  restaurant_id      String     @unique
+  name               String
+  has_online_delivery Int
+  photos_url         String
+  url                String
+  user_rating        Json
+  cuisines           String[]
+  average_cost_for_two Int
+  has_table_booking  Int
+  location           Json
+  featured_image     String
+  currency           String
+  book_url           String
+  menu_url           String
+}
